@@ -1,6 +1,6 @@
 // Your code goes here
 
-// const modal = document.querySelector('')
+
 
 // mouseover
 const navHover = document.querySelector('.nav');
@@ -15,41 +15,70 @@ navHover.addEventListener('mouseout', event => {
 })
 
 //mousemove
-const smallImg = document.querySelector('.content-section img');
-smallImg.addEventListener('mousemove', event => {
+const smallImg = document.querySelectorAll('.content-section img');
+
+function small(event) {
     event.target.style.width = '50px'
-})
+
+}
+smallImg.forEach(element => element.addEventListener('mousemove', small));
+// smallImg.addEventListener('mousemove', event => {
+//     event.target.style.width = '50px'
+// })
 
 //mouseleave
 const bigImg = document.querySelector('.content-destination img')
 bigImg.addEventListener('mouseleave', event => {
-    event.target.style.width = '100px'
+    event.target.style.width = '300px'
 })
 
-// keydown //need help
-const buttons = document.querySelector('.btn');
-buttons.addEventListener('keypress', event => {
-    if (event.key === 'Enter'){
-    event.target.style.color = 'red'
-    }
-})
+// wheel 
+const bottomHeader = document.querySelectorAll('.destination h4');
+// bottomHeader.addEventListener('wheel', event => {
+//     event.target.style.fontSize = '2em';
+// })
 
-// wheel //need help
-const bottomHeader = document.querySelector('.destination');
-bottomHeader.addEventListener('wheel', event => {
-    event.target.style.fontSize = '2em';
-})
+function larger(event) {
+    event.target.style.fontSize = '4em'
 
-// click //need help
-const navAnchor = document.querySelector('a');
+}
+bottomHeader.forEach(element => element.addEventListener('wheel', larger));
+
+// click
+const navAnchor = document.querySelector('.nav');
 navAnchor.addEventListener('click', event => {
     event.target.style.color = 'green'
 })
 
 
-// dblclick //need help
+// dblclick
      navAnchor.addEventListener('dblclick', event => {
      event.target.style.color = 'yellow'
  })
- 
+
+ //keypress
+ const pressKey = document.querySelector('.nav');
+ pressKey.addEventListener('keypress', event => {
+     event.target.style.fontSize = '100px'
+ })
+
+//keydown
+function escKey(event) {
+    if (event.key === 'Escape') {
+        alert('you pressed escape!');
+    }
+} 
+document.addEventListener('keydown', escKey);
+
+//keyup
+function enterKey(event) {
+    if (event.key === 'Enter') {
+        alert('you pressed enter!');
+    }
+} 
+document.addEventListener('keyup', enterKey);
+
+// propogation
+
+
 
