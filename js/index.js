@@ -2,19 +2,19 @@
 
 
 
-// mouseover
+// 1 mouseover
 const navHover = document.querySelector('.nav');
 
 navHover.addEventListener('mouseover', event => {
     event.target.style.color = 'red'
 });
 
-// mouseout
+// 2 mouseout
 navHover.addEventListener('mouseout', event => {
     event.target.style.color = 'blue'
 })
 
-//mousemove
+// 3 mousemove
 const smallImg = document.querySelectorAll('.content-section img');
 
 function small(event) {
@@ -26,13 +26,13 @@ smallImg.forEach(element => element.addEventListener('mousemove', small));
 //     event.target.style.width = '50px'
 // })
 
-//mouseleave
+// 4 mouseleave
 const bigImg = document.querySelector('.content-destination img')
 bigImg.addEventListener('mouseleave', event => {
     event.target.style.width = '300px'
 })
 
-// wheel 
+// 5 wheel 
 const bottomHeader = document.querySelectorAll('.destination h4');
 // bottomHeader.addEventListener('wheel', event => {
 //     event.target.style.fontSize = '2em';
@@ -44,25 +44,25 @@ function larger(event) {
 }
 bottomHeader.forEach(element => element.addEventListener('wheel', larger));
 
-// click
+// 6 click
 const navAnchor = document.querySelector('.nav');
 navAnchor.addEventListener('click', event => {
     event.target.style.color = 'green'
 })
 
 
-// dblclick
+// 7 dblclick
      navAnchor.addEventListener('dblclick', event => {
      event.target.style.color = 'yellow'
  })
 
- //keypress
+ // 8 keypress
  const pressKey = document.querySelector('.nav');
  pressKey.addEventListener('keypress', event => {
      event.target.style.fontSize = '100px'
  })
 
-//keydown
+// 9 keydown
 function escKey(event) {
     if (event.key === 'Escape') {
         alert('you pressed escape!');
@@ -70,7 +70,7 @@ function escKey(event) {
 } 
 document.addEventListener('keydown', escKey);
 
-//keyup
+// 10 keyup
 function enterKey(event) {
     if (event.key === 'Enter') {
         alert('you pressed enter!');
@@ -79,6 +79,28 @@ function enterKey(event) {
 document.addEventListener('keyup', enterKey);
 
 // propogation
+function propFunc(event) {
+    console.log(`event passing through ${event.currentTarget.nodeName || 'Window'}
+    target --> ${event.target.nodeName}
+    `)
+}
 
+window.addEventListener('click', propFunc)
+firstDiv.addEventListener('click', propFunc)
+document.addEventListener('click', propFunc)
+
+document.body.addEventListener('click', (event) => event.stopPropagation())
+document.body.addEventListener('click', propFunc)
+
+firstButton.addEventListener('click', propFunc) 
+
+// preventDefault
+const anchorLinks = document.querySelectorAll('.nav-link');
+
+anchorLinks.forEach((element) => {
+    element.addEventListener("click", (event) => {
+        event.preventDefault();
+    });
+});
 
 
